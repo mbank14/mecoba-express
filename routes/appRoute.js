@@ -1,4 +1,5 @@
 module.exports = (db) => {
+    const userController = require('../controllers/usersControlers')
     const router = require('express').Router();
 
     router.use((req, res, next) => {
@@ -6,6 +7,9 @@ module.exports = (db) => {
         next();
     });
 
+    router.get('/coba/users', userController.getUsers)
+
+    
     router.get('/users', async (req,res) => {
         try {
             const users = await db('users').select('*')
