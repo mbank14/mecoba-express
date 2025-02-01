@@ -8,14 +8,14 @@ const getAllUser = async () =>{
 }
 
 const getIdUser = async (id) => {
-    return await db('users').where('id',id).first()
+    return await db('users').where({id}).first()
 }
 
-const createUser = async (name, phone) => {
-    return await db('users').insert({name, phone})
+const createUser = async ({name, phone}) => {
+    return await db('users').insert({ name, phone})
 }
 
-const updateUser = async (id,name, phone) => {
+const updateUser = async ({id,name, phone}) => {
     return await db('users').where({id}).update({name, phone})
 }
 

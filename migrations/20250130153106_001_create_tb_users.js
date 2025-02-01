@@ -7,12 +7,14 @@ exports.up = function(knex) {
     tb.increments('id').primary()
     tb.string('name').notNullable()
     tb.string('phone').notNullable()
+    tb.string('username').notNullable()
+    tb.string('password').notNullable()
   })
   .then(() => {
     return knex('users').insert([
-        { name: "Komodos", phone: "088882828"},
-        { name: "Jos", phone: "082342342"},
-        { name: "Gandos", phone: "082342342"}
+        { name: "Komodos", phone: "088882828", username: "komodo", password: "komodo"},
+        { name: "Jos", phone: "082342342",username: "lololo", password: "komodo"},
+        { name: "Gandos", phone: "082342342", username: "kokoko", password: "komodo"}
     ])
   })
 };

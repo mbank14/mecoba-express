@@ -7,30 +7,14 @@ module.exports = (db) => {
         next();
     });
 
+    // get all user
     router.get('/coba/users', userController.getUsers)
-
     
-    router.get('/users', async (req,res) => {
-        try {
-            const users = await db('users').select('*')
-            res.json(users)
-            users.length > 0 ? console.log('isi'): console.log('kososng');;
-            console.log('res');
-        } catch (error) {
-            res.status(500).json({error: 'Failed'})
-        }
-    })
+    // get user from id
+    router.get('/coba/users/:id', userController.getUserById)
 
-    router.get('/users/:id', async (req,res) => {
-        const id  = req.params.id
-        try {
-            const users = await db('users').wheres('id', id).first()
-            users ? res.json(users) : res.status(404).end()
-            // res.json()
-        } catch (error) {
-            res.status(500).json({error: 'Failed'})
-        }
-    })
+    // create user
+    router.post('/coba/users', userController.createUsers)
 
     router.post('/users', async (req, res) => {
         const { name, phone } = req.body;
