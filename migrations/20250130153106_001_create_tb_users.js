@@ -7,8 +7,8 @@ exports.up = function(knex) {
     tb.increments('id').primary()
     tb.string('name').notNullable()
     tb.string('phone').notNullable()
-    tb.string('username').notNullable()
-    tb.string('password').notNullable()
+    tb.string('username').nullable()
+    tb.string('password').nullable()
   })
   .then(() => {
     return knex('users').insert([
